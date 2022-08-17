@@ -28,7 +28,7 @@ export default function UploadPage() {
     },
   };
 
-  const handleSubmit = (file) => {
+  const handleSubmit = (file: any) => {
     try {
       console.log(file);
     } catch (error) {
