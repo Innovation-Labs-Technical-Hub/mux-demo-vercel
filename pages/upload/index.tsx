@@ -7,7 +7,9 @@ export default function UploadPage() {
       <Head>
         <title>Upload Page</title>
       </Head>
-      <div>Upload</div>
+      <div>
+        <h1>Upload Video</h1>
+      </div>
     </div>
   );
 }
