@@ -2,10 +2,12 @@ import React, { useCallback } from 'react';
 import Head from 'next/head';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload, UploadProps } from 'antd';
+import MuxPlayer from '@mux/mux-player-react';
 import axios from 'axios';
 
 export default function UploadPage() {
   const uploadProps: UploadProps = {
+    accept: '.mp4',
     name: 'file',
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     headers: {
@@ -21,10 +23,14 @@ export default function UploadPage() {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
+    onDownload(file) {
+      handleSubmit(file);
+    },
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (file) => {
     try {
+      console.log(file);
     } catch (error) {
       console.error(error);
     } finally {
@@ -44,6 +50,16 @@ export default function UploadPage() {
       </div>
       <br />
       <Button onClick={handleSubmit}>Submit</Button>
+      <br />
+      <MuxPlayer
+        streamType="on-demand"
+        playbackId="EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs"
+        metadata={{
+          video_id: 'video-id-54321',
+          video_title: 'Test video title',
+          viewer_user_id: 'user-id-007',
+        }}
+      />
     </div>
   );
 }
